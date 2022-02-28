@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoFixture.Xunit2;
 using NSubstitute;
 using Xunit;
 
@@ -8,19 +9,19 @@ namespace ScenarioUnitTesting.Tests
 {
     public class ExampleTests
     {
-        [Theory, AutoNSubstituteData]
+        [Theory, AutoData]
         public void WhenNotifyIsCalled_AndNoAlerts_AnEmailIsSentWithEmptyBody(
             Scenario<NotificationService> scenario,
             string emailAddress)
         {
             scenario.When().Notify(emailAddress);
-
+            
             scenario.Dependency<IEmailSender>()
                 .Received()
                 .SendTo(emailAddress, Arg.Is<string>(s => string.IsNullOrWhiteSpace(s)));
         }
 
-        [Theory, AutoNSubstituteData]
+        [Theory, AutoData]
         public void WhenNotifyIsCalled_AndThereIsAnAlert_AnEmailIsSentWithTheAlertDescription(
             Scenario<NotificationService> scenario,
             string emailAddress,

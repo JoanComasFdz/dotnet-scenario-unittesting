@@ -3,51 +3,51 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using AutoFixture;
 
 namespace ScenarioUnitTesting
 {
     public class Scenario<TSut> where TSut : class
     {
-        private readonly Dictionary<Type, object> _dictionaryOfDependencies = new();
+        private readonly IFixture _fixture;
 
         public Scenario()
         {
-            // Preemptively generate all the mocks.
-            foreach (var parameter in GetConstructorDependencies())
-            {
-                var substitute = Substitute.For(new[] { parameter.ParameterType }, Array.Empty<object>());
-                _dictionaryOfDependencies.Add(parameter.ParameterType, substitute);
-            }
+            _fixture = new Fixture();
+
+            // The trick is to create the mocks for all parameters in advance
+            // and register them in the Fixture.
+            // This way, a test may call the When() first and then Dependency<T>() to assert without configuring
+            // and it will still work.
+            GetAllParametersFromAllConstructors()
+                .Select(parameter => new
+                {
+                    parameter.ParameterType,
+                    ParameterSubstitute = Substitute.For(new[] { parameter.ParameterType }, Array.Empty<object>())
+                })
+                .ToList()
+                .ForEach(pair => _fixture.InjectByType(pair.ParameterType, pair.ParameterSubstitute));
         }
 
-        private static ParameterInfo[] GetConstructorDependencies()
+        private static IEnumerable<ParameterInfo> GetAllParametersFromAllConstructors()
         {
-            var sutConstructors = typeof(TSut).GetConstructors();
-            if (sutConstructors.Length != 1)
-            {
-                throw new Exception($"The Scenario class can only work with SUTs that have only one constructor, but the sut {typeof(TSut).Name} contains {sutConstructors.Length} constructors");
-            }
-
-            var constructor = sutConstructors.Single();
-            return constructor.GetParameters();
+            var parameters1 = typeof(TSut)
+                .GetConstructors()
+                .SelectMany(c => c.GetParameters())
+                .Distinct()
+                .ToArray();
+            return parameters1;
         }
 
-        public TDependency Dependency<TDependency>()
+        public TDependency Dependency<TDependency>() where TDependency : class
         {
-            if (!_dictionaryOfDependencies.ContainsKey(typeof(TDependency)))
-            {
-                throw new Exception($"The {typeof(TSut).Name}'s constructor does not contain a parameter of type {typeof(TDependency).FullName}.");
-            }
-
-            return (TDependency)_dictionaryOfDependencies[typeof(TDependency)];
+            var substitute = _fixture.Create<TDependency>();
+            return substitute;
         }
 
         public TSut When()
         {
-            var constructorInfo = typeof(TSut).GetConstructors().Single();
-
-            var instance = (TSut)constructorInfo.Invoke(_dictionaryOfDependencies.Values.ToArray());
-
+            var instance= _fixture.Create<TSut>();
             return instance;
         }
     }
