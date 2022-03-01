@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ExampleApplication\ExampleApplication.csproj" />
     <ProjectReference Include="..\ScenarioUnitTesting\ScenarioUnitTesting.csproj" />
   </ItemGroup>
 
