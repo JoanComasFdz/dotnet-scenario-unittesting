@@ -4,19 +4,16 @@ A very easy way to write Unit Tests in [xUnit](https://xunit.net/docs/getting-st
 I recommend to complement it with [FluentAssertions](https://fluentassertions.com/).
 
 ## How to Use
-Explore the `ScenarioUnitTesting.Tests` folder for a couple of examples.
-
-### Step by step
-1. Decorate your test with `[Theory, AutoNSubstituteData]`
-2. Add a Scenario parameter for the class you want to test:
-3. Use the `When()` method to gethe instance of the System Under Test.
+1. Decorate your test with `[Theory, AutoData]`.
+2. Add a `Scenario<MyClass>` parameter to the test test.
+3. Use the `When()` method to get the instance of the System Under Test.
 4. Use the `Dependency<T>` method to get a Mock, then configure it or assert it.
 
 Example:
 
 ```chsarp
-[Theory, AutoNSubstituteData]
-public void ExampleTest(Scenario<NotificationService> scenario)
+[Theory, AutoData]
+public void ExampleTest(Scenario<MyClass> scenario)
 {
     scenario.Dependency<IMyInterface>().GetSomething(true).Returns(123);
 
