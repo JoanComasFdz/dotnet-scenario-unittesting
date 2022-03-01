@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoFixture.Xunit2;
 using NSubstitute;
+using ScenarioUnitTesting;
 using Xunit;
 
-namespace ScenarioUnitTesting.Tests
+namespace ExampleApplication.Tests
 {
     public class ExampleTests
     {
