@@ -23,6 +23,8 @@
   <ItemGroup>
     <ProjectReference Include="..\ExampleApplication\ExampleApplication.csproj" />
     <ProjectReference Include="..\ScenarioUnitTesting\ScenarioUnitTesting.csproj" />
+    <ProjectReference Include="..\ScenarioUnitTesting.SourceGenerator\ScenarioUnitTesting.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+
   </ItemGroup>
 
 </Project>

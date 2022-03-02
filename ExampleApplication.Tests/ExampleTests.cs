@@ -1,6 +1,6 @@
 using AutoFixture.Xunit2;
+using ExampleApplication.Domain;
 using NSubstitute;
-using ScenarioUnitTesting;
 using Xunit;
 
 namespace ExampleApplication.Tests;
@@ -8,26 +8,26 @@ namespace ExampleApplication.Tests;
 public class ExampleTests
 {
     [Theory, AutoData]
-    public void WhenNotifyIsCalled_AndNoAlerts_AnEmailIsSentWithEmptyBody(
-        Scenario<NotificationService> scenario,
-        string emailAddress)
+    public void WhenScrapIsCalled_HttpClientGetsUrl(
+        WebScrapperScenario scenario,
+        string url)
     {
-        scenario.When().Notify(emailAddress);
+        scenario.WebScrapper.Scrap(url);
         
-        scenario.Dependency<IEmailSender>()
+        scenario.Dependency<IHttpClient>()
             .Received()
-            .SendTo(emailAddress, Arg.Is<string>(s => string.IsNullOrWhiteSpace(s)));
+            .Get(url);
     }
 
     [Theory, AutoData]
     public void WhenNotifyIsCalled_AndThereIsAnAlert_AnEmailIsSentWithTheAlertDescription(
-        Scenario<NotificationService> scenario,
+        NotificationServiceScenario scenario,
         string emailAddress,
         Alert alert)
     {
         scenario.Dependency<IAlertsProvider>().GetAlerts().Returns(new [] { alert });
 
-        scenario.When().Notify(emailAddress);
+        scenario.NotificationService.Notify(emailAddress);
 
         scenario.Dependency<IEmailSender>()
             .Received()
