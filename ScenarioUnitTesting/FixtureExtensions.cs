@@ -19,7 +19,7 @@ internal static class FixtureExtensions
         var genericInjector = typeof(GenericInjector<>).MakeGenericType(type);
         var genericInjectorInstance = Activator.CreateInstance(genericInjector);
         var mi = genericInjectorInstance.GetType().GetMethod("Inject");
-        mi.Invoke(genericInjectorInstance, new object?[] {fixture, instance});
+        mi.Invoke(genericInjectorInstance, new [] {fixture, instance});
                 
         return fixture;
     }
