@@ -4,7 +4,6 @@ using ExampleApplicationWithConsole;
 using ExampleApplicationWithConsole.Domain;
 using ExampleApplicationWithConsole.Tests;
 using NSubstitute;
-using ScenarioUnitTesting;
 
 Console.WriteLine("Hello, THIS IS A UNIT TEST EMULATOR because can't debug a Source Generator with an xUnit project!");
 

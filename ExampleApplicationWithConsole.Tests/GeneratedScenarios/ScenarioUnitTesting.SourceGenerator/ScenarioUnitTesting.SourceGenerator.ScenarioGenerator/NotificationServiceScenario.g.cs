@@ -1,4 +1,4 @@
-﻿// Auto-generated code with ScenarioUnitTesting.SourceGenerator at 03/03/2022 15:48:01
+﻿// Auto-generated code with ScenarioUnitTesting.SourceGenerator at 03/03/2022 22:00:43
 
 using ScenarioUnitTesting;
 
