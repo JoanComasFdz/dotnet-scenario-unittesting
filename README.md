@@ -3,6 +3,8 @@ A very easy way to write Unit Tests in [xUnit](https://xunit.net/docs/getting-st
 
 I recommend to complement it with [FluentAssertions](https://fluentassertions.com/).
 
+[![NuGet Badge](https://buildstats.info/nuget/JoanComas.ScenarioUnitTesting)](https://www.nuget.org/packages/JoanComas.ScenarioUnitTesting)
+
 ## How to Use
 1. Decorate your test with `[Theory, AutoData]`.
 2. Add a `Scenario<MyClass>` parameter to the test test.
