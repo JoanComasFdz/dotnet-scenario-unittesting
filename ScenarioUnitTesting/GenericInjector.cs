@@ -11,7 +11,9 @@ namespace ScenarioUnitTesting;
 /// can be made and instantiated via reflection.
 /// </summary>
 /// <typeparam name="T">The type of the parameter to be injected</typeparam>
+#pragma warning disable CA1812 // This class is instantiated via reflection
 internal class GenericInjector<T>
+#pragma warning restore CA1812
 {
     // ReSharper disable once UnusedMember.Global Reason: Called via reflection.
 #pragma warning disable CA1822 // Mark members as static
