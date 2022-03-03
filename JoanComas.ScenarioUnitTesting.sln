@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioUnitTesting", "ScenarioUnitTesting\ScenarioUnitTesting.csproj", "{3748B762-B653-4F7F-85FC-CEBF7DB31255}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JoanComas.ScenarioUnitTesting", "JoanComas.ScenarioUnitTesting\JoanComas.ScenarioUnitTesting.csproj", "{3748B762-B653-4F7F-85FC-CEBF7DB31255}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApplicationWithxUnit.Tests", "ExampleApplicationWithxUnit.Tests\ExampleApplicationWithxUnit.Tests.csproj", "{D647E358-9906-4AD1-8CEF-24480918FABB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApplicationWithxUnit", "ExampleApplicationWithxUnit\ExampleApplicationWithxUnit.csproj", "{F6D201FD-F595-483E-9E0D-0CE6694D41EE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioUnitTesting.SourceGenerator", "ScenarioUnitTesting.SourceGenerator\ScenarioUnitTesting.SourceGenerator.csproj", "{79745C92-5F99-4277-87F6-23689163E01A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JoanComas.ScenarioUnitTesting.SourceGenerator", "JoanComas.ScenarioUnitTesting.SourceGenerator\JoanComas.ScenarioUnitTesting.SourceGenerator.csproj", "{79745C92-5F99-4277-87F6-23689163E01A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApplicationWithConsole", "ExampleApplicationWithConsole\ExampleApplicationWithConsole.csproj", "{C9C63E1F-3880-4361-AD66-3511A7D606BC}"
 EndProject

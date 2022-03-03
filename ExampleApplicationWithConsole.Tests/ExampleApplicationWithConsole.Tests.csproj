@@ -9,8 +9,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ExampleApplicationWithConsole\ExampleApplicationWithConsole.csproj" />
-    <ProjectReference Include="..\ScenarioUnitTesting\ScenarioUnitTesting.csproj" />
-    <ProjectReference Include="..\ScenarioUnitTesting.SourceGenerator\ScenarioUnitTesting.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\JoanComas.ScenarioUnitTesting\JoanComas.ScenarioUnitTesting.csproj" />
+    <ProjectReference Include="..\JoanComas.ScenarioUnitTesting.SourceGenerator\JoanComas.ScenarioUnitTesting.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 
   </ItemGroup>
 
