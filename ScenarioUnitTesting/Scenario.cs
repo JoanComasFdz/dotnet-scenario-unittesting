@@ -5,6 +5,8 @@ using System.Linq;
 using System.Reflection;
 using AutoFixture;
 
+[assembly: CLSCompliant(true)]
+
 namespace ScenarioUnitTesting
 {
     public class Scenario<TSut> where TSut : class
