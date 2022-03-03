@@ -1,10 +1,11 @@
 using AutoFixture.Xunit2;
+using ExampleApplication;
 using ExampleApplication.Domain;
 using NSubstitute;
 using ScenarioUnitTesting;
 using Xunit;
 
-namespace ExampleApplication.Tests;
+namespace ExampleApplicationWithxUnit.Tests;
 
 public class ExampleTests
 {
