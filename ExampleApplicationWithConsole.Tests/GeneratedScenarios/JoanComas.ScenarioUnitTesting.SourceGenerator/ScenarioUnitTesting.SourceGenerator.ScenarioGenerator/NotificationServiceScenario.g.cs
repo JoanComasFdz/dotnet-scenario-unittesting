@@ -1,6 +1,6 @@
-﻿// Auto-generated code with ScenarioUnitTesting.SourceGenerator at 03/03/2022 22:42:01
+﻿// Auto-generated code with ScenarioUnitTesting.SourceGenerator at 14/03/2022 09:56:06
 
-using ScenarioUnitTesting;
+using JoanComas.ScenarioUnitTesting;
 
 namespace ExampleApplicationWithConsole.Tests
 {

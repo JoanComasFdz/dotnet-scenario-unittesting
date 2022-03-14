@@ -43,7 +43,7 @@ internal class ScenariosBuilder
         var sutNamespace = GetFullNamespace(sut.ContainingSymbol);
         var scenarioSource = $@"// Auto-generated code with ScenarioUnitTesting.SourceGenerator at {DateTime.Now.ToShortDateString()} {DateTime.Now.ToLongTimeString()}
 
-using ScenarioUnitTesting;
+using JoanComas.ScenarioUnitTesting;
 
 namespace {currentProjectName}
 {{

@@ -1,7 +1,7 @@
 ﻿using System;
 using AutoFixture;
 
-namespace ScenarioUnitTesting;
+namespace JoanComas.ScenarioUnitTesting;
 
 /// <summary>
 /// The inject methods available in the Fixture are actually extension methods

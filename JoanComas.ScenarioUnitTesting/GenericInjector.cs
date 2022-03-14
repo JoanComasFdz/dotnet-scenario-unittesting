@@ -3,7 +3,7 @@ using AutoFixture;
 using AutoFixture.Dsl;
 using AutoFixture.Kernel;
 
-namespace ScenarioUnitTesting;
+namespace JoanComas.ScenarioUnitTesting;
 
 /// <summary>
 /// This class was created after inspecting the source code of the Inject extension methods.
