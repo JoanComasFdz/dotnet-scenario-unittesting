@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.CodeAnalysis;
 
-namespace ScenarioUnitTesting.SourceGenerator;
+namespace JoanComas.ScenarioUnitTesting.SourceGenerator;
 
 internal class ScenariosBuilder
 {

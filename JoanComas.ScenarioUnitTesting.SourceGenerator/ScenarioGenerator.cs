@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace ScenarioUnitTesting.SourceGenerator;
+namespace JoanComas.ScenarioUnitTesting.SourceGenerator;
 
 [Generator]
 public class ScenarioGenerator : ISourceGenerator

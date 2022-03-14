@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.CodeAnalysis;
 
-namespace ScenarioUnitTesting.SourceGenerator;
+namespace JoanComas.ScenarioUnitTesting.SourceGenerator;
 
 internal class ReferencedProjectClassesFinder
 {

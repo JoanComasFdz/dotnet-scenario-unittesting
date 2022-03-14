@@ -1,4 +1,4 @@
-﻿namespace ScenarioUnitTesting.SourceGenerator;
+﻿namespace JoanComas.ScenarioUnitTesting.SourceGenerator;
 
 internal struct ScenarioSourceInfo
 {
