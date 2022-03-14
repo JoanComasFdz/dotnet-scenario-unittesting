@@ -11,17 +11,16 @@
     <ProjectReference Include="..\ExampleApplicationWithConsole\ExampleApplicationWithConsole.csproj" />
     <ProjectReference Include="..\JoanComas.ScenarioUnitTesting\JoanComas.ScenarioUnitTesting.csproj" />
     <ProjectReference Include="..\JoanComas.ScenarioUnitTesting.SourceGenerator\JoanComas.ScenarioUnitTesting.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-
   </ItemGroup>
 
-  <PropertyGroup>
+  <!--<PropertyGroup>
     <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
     <CompilerGeneratedFilesOutputPath>GeneratedScenarios</CompilerGeneratedFilesOutputPath>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
-  <ItemGroup>
-    <!-- Exclude the output of source generators from the compilation -->
+  <!--<ItemGroup>
+    --><!-- Exclude the output of source generators from the compilation --><!--
     <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
-  </ItemGroup>
+  </ItemGroup>-->
 
 </Project>
