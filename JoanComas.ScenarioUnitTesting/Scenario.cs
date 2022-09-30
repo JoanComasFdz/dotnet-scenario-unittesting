@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using AutoFixture;
 
-namespace ScenarioUnitTesting
+namespace JoanComas.ScenarioUnitTesting
 {
     public class Scenario<TSut> where TSut : class
     {

@@ -1,6 +1,6 @@
 using AutoFixture.Xunit2;
 using NSubstitute;
-using ScenarioUnitTesting;
+using JoanComas.ScenarioUnitTesting;
 using Xunit;
 
 namespace ExampleApplication.Tests;
