@@ -5,9 +5,11 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JoanComas.ScenarioUnitTesting", "JoanComas.ScenarioUnitTesting\JoanComas.ScenarioUnitTesting.csproj", "{3748B762-B653-4F7F-85FC-CEBF7DB31255}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApplication.Tests", "ExampleApplication.Tests\ExampleApplication.Tests.csproj", "{D647E358-9906-4AD1-8CEF-24480918FABB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApplication.Tests", "ExampleConsoleApplication\ExampleApplication.Tests\ExampleApplication.Tests.csproj", "{D647E358-9906-4AD1-8CEF-24480918FABB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApplication", "ExampleApplication\ExampleApplication.csproj", "{F6D201FD-F595-483E-9E0D-0CE6694D41EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleApplication", "ExampleConsoleApplication\ExampleApplication\ExampleApplication.csproj", "{F6D201FD-F595-483E-9E0D-0CE6694D41EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExampleConsoleApplication", "ExampleConsoleApplication", "{38BD81CC-5328-4821-88A2-21FB0445C1E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D647E358-9906-4AD1-8CEF-24480918FABB} = {38BD81CC-5328-4821-88A2-21FB0445C1E4}
+		{F6D201FD-F595-483E-9E0D-0CE6694D41EE} = {38BD81CC-5328-4821-88A2-21FB0445C1E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E55032EA-775B-4388-B67A-DECC8F91FFD1}
