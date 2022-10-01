@@ -25,8 +25,9 @@ public void ExampleTest(Scenario<MyClass> scenario)
 }
 ```
 
+## Asp .NET Core
 
-For Asp .NET Core projects, use the `ControllerScenario` instead.
+Use the `ControllerScenario` instead.
 
 This allows to instantiate a Controller (which won't be possilble with the `Scenario` class because of [BindingInfo](https://github.com/AutoFixture/AutoFixture/issues/1141])).
 
