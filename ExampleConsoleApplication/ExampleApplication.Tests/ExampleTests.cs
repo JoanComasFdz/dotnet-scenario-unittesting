@@ -3,7 +3,7 @@ using NSubstitute;
 using JoanComas.ScenarioUnitTesting;
 using Xunit;
 
-namespace ExampleApplication.Tests;
+namespace ExampleConsoleApplication.Tests;
 
 public class ExampleTests
 {

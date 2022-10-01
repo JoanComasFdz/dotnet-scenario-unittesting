@@ -1,4 +1,4 @@
-﻿namespace ExampleApplication;
+﻿namespace ExampleConsoleApplication;
 
 public class NotificationService
 {
