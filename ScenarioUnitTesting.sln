@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JoanComas.ScenarioUnitTesting", "JoanComas.ScenarioUnitTesting\JoanComas.ScenarioUnitTesting.csproj", "{3748B762-B653-4F7F-85FC-CEBF7DB31255}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleConsoleApplication.Tests", "ExampleConsoleApplication\ExampleApplication.Tests\ExampleConsoleApplication.Tests.csproj", "{D647E358-9906-4AD1-8CEF-24480918FABB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleConsoleApplication.Tests", "ExampleConsoleApplication\ExampleConsoleApplication.Tests\ExampleConsoleApplication.Tests.csproj", "{D647E358-9906-4AD1-8CEF-24480918FABB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleConsoleApplication", "ExampleConsoleApplication\ExampleApplication\ExampleConsoleApplication.csproj", "{F6D201FD-F595-483E-9E0D-0CE6694D41EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleConsoleApplication", "ExampleConsoleApplication\ExampleConsoleApplication\ExampleConsoleApplication.csproj", "{F6D201FD-F595-483E-9E0D-0CE6694D41EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExampleConsoleApplication", "ExampleConsoleApplication", "{38BD81CC-5328-4821-88A2-21FB0445C1E4}"
 EndProject

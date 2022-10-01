@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\JoanComas.ScenarioUnitTesting\JoanComas.ScenarioUnitTesting.csproj" />
-    <ProjectReference Include="..\ExampleApplication\ExampleConsoleApplication.csproj" />
+    <ProjectReference Include="..\ExampleConsoleApplication\ExampleConsoleApplication.csproj" />
   </ItemGroup>
 
 </Project>
