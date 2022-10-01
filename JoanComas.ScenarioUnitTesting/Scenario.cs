@@ -9,11 +9,11 @@ namespace JoanComas.ScenarioUnitTesting
 {
     public class Scenario<TSut> where TSut : class
     {
-        private readonly IFixture _fixture;
+        protected IFixture Fixture { get; }
 
         public Scenario()
         {
-            _fixture = new Fixture();
+            Fixture = new Fixture();
 
             // The trick is to create the mocks for all parameters in advance
             // and register them in the Fixture.
@@ -23,10 +23,12 @@ namespace JoanComas.ScenarioUnitTesting
                 .Select(parameter => new
                 {
                     parameter.ParameterType,
-                    ParameterSubstitute = Substitute.For(new[] { parameter.ParameterType }, Array.Empty<object>())
+                    ParameterSubstitute = Substitute.For(
+                        new[] { parameter.ParameterType },
+                        Array.Empty<object>())
                 })
                 .ToList()
-                .ForEach(pair => _fixture.InjectByType(pair.ParameterType, pair.ParameterSubstitute));
+                .ForEach(pair => Fixture.InjectByType(pair.ParameterType, pair.ParameterSubstitute));
         }
 
         private static IEnumerable<ParameterInfo> GetAllParametersFromAllConstructors()
@@ -41,13 +43,13 @@ namespace JoanComas.ScenarioUnitTesting
 
         public TDependency Dependency<TDependency>() where TDependency : class
         {
-            var substitute = _fixture.Create<TDependency>();
+            var substitute = Fixture.Create<TDependency>();
             return substitute;
         }
 
         public TSut When()
         {
-            var instance= _fixture.Create<TSut>();
+            var instance= Fixture.Create<TSut>();
             return instance;
         }
     }
