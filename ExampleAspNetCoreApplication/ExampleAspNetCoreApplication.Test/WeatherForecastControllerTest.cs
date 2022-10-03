@@ -3,6 +3,7 @@ using ExampleAspNetCoreApplication.Controllers;
 using FluentAssertions;
 using JoanComas.ScenarioUnitTesting.AspNetCore;
 using NSubstitute;
+using Xunit;
 
 namespace ExampleAspNetCoreApplication.Test
 {
