@@ -27,6 +27,6 @@ internal class GenericInjector<T>
     public void Inject(IFixture fixture, T instance)
 #pragma warning restore CA1822 // Mark members as static
     {
-        fixture.Customize<T>(c => c.FromFactory(() => instance).OmitAutoProperties());
+        fixture.Customize<T>(c => c.FromFactory(() => instance));
     }
 }
