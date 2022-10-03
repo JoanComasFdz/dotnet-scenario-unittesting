@@ -30,10 +30,14 @@ namespace JoanComas.ScenarioUnitTesting
     /// <typeparam name="TSut">The type of the system under test.</typeparam>
     public class Scenario<TSut> where TSut : class
     {
+        private readonly HashSet<Type> _substitutedDependencies;
+        private TSut _systemUnderTest;
+
         protected IFixture Fixture { get; }
 
         public Scenario()
         {
+            _substitutedDependencies = new HashSet<Type>();
             Fixture = new Fixture();
 
             // The approach is to create the mocks for all parameters in advance
@@ -49,7 +53,11 @@ namespace JoanComas.ScenarioUnitTesting
                         Array.Empty<object>())
                 })
                 .ToList()
-                .ForEach(pair => Fixture.InjectByType(pair.ParameterType, pair.ParameterSubstitute));
+                .ForEach(pair =>
+                {
+                    Fixture.InjectByType(pair.ParameterType, pair.ParameterSubstitute);
+                    _substitutedDependencies.Add(pair.ParameterType);
+                });
         }
 
         private static IEnumerable<ParameterInfo> GetAllParametersFromAllConstructors()
@@ -69,6 +77,11 @@ namespace JoanComas.ScenarioUnitTesting
         /// <returns>The existing instance of the substitute for the specified dependency type.</returns>
         public TDependency Dependency<TDependency>() where TDependency : class
         {
+            if (!_substitutedDependencies.Contains(typeof(TDependency)))
+            {
+                throw new DependencyTypeNotFoundInSutDependenciesException(typeof(TSut), typeof(TDependency));
+            }
+
             var substitute = Fixture.Create<TDependency>();
             return substitute;
         }
@@ -79,8 +92,7 @@ namespace JoanComas.ScenarioUnitTesting
         /// <returns>The instance of the system under test with all its dependencies mocked.</returns>
         public TSut When()
         {
-            var instance= Fixture.Create<TSut>();
-            return instance;
+            return _systemUnderTest ??= Fixture.Create<TSut>();
         }
     }
 }
