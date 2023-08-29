@@ -33,6 +33,8 @@ This allows to instantiate a Controller (which won't be possilble with the `Scen
 
 Additionally, it has a `ControllerContext` property exposed to arrange it.
 
+Finally, it makes sure that any DbContext uses an in-memory database, so that yoy don't have to arrange it in your tests and no connection to a real database is done.
+
 Example:
 
 ```chsarp
@@ -51,4 +53,6 @@ public void ExampleTest(ControllerScenario<MyControllerClass> scenario)
 ```
 
 > **Important**: 
-If your Controller get a `DbContext` injected, make sure it has a parameterless constructor.
+> If your Controller gets a `DbContext` injected, make sure that:
+>   - It has a parameterless constructor.
+>   - The types used in the DbSets have a primary key.
