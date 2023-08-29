@@ -42,9 +42,8 @@ public class ControllerScenario<TController> : Scenario<TController> where TCont
         // Make sure all DbContext instances use an in-memory database.
         var customization = new EntityFrameworkCore.AutoFixture.InMemory.InMemoryCustomization
         {
-            DatabaseName = $"InMemoryDBDataBase",
+            DatabaseName = $"InMemory-{Guid.NewGuid()}",
             UseUniqueNames = false, // No suffix for store names. All contexts will connect to same store
-
         };
         Fixture.Customize(customization);
     }
