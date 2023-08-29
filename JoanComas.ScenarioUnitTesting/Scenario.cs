@@ -60,19 +60,22 @@ public class Scenario<TSut> where TSut : class
         // This way, a test may call the When() first and then Dependency<T>()
         // to assert without configuring and it will still work.
         GetAllParametersFromAllConstructors()
-            .Where(fakeConstructorParameter)
             .Select(parameter => new
             {
                 parameter.ParameterType,
-                ParameterSubstitute = Substitute.For(
-                    new[] { parameter.ParameterType },
-                    Array.Empty<object>())
+                TypeToInject = fakeConstructorParameter(parameter)
+                ? Substitute.For(new[] { parameter.ParameterType }, Array.Empty<object>())
+                : parameter.ParameterType,
+                IsFaked = fakeConstructorParameter(parameter)
             })
             .ToList()
-            .ForEach(pair =>
+            .ForEach(info =>
             {
-                Fixture.InjectByType(pair.ParameterType, pair.ParameterSubstitute);
-                _substitutedDependencies.Add(pair.ParameterType);
+                if (info.IsFaked)
+                {
+                    Fixture.InjectByType(info.ParameterType, info.TypeToInject);
+                }
+                _substitutedDependencies.Add(info.ParameterType);
             });
     }
 
