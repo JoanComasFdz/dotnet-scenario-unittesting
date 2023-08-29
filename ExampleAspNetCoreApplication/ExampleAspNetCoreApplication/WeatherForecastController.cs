@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ExampleAspNetCoreApplication.Controllers;
+namespace ExampleAspNetCoreApplication;
 
 [ApiController]
 [Route("[controller]")]
@@ -12,10 +12,12 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly WeatherContext weatherContext;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, WeatherContext weatherContext)
     {
         _logger = logger;
+        this.weatherContext = weatherContext;
     }
 
     [HttpGet(Name = "GetWeatherForecast")]

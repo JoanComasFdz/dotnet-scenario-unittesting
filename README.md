@@ -49,3 +49,6 @@ public void ExampleTest(ControllerScenario<MyControllerClass> scenario)
         .GetSomething(true);
 }
 ```
+
+> **Important**: 
+If your Controller get a `DbContext` injected, make sure it has a parameterless constructor.

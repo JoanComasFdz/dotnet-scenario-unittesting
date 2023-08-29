@@ -1,5 +1,4 @@
 using AutoFixture.Xunit2;
-using ExampleAspNetCoreApplication.Controllers;
 using FluentAssertions;
 using JoanComas.ScenarioUnitTesting.AspNetCore;
 using NSubstitute;
