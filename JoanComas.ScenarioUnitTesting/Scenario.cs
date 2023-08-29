@@ -33,9 +33,24 @@ public class Scenario<TSut> where TSut : class
     private readonly HashSet<Type> _substitutedDependencies;
     private TSut _systemUnderTest;
 
+    /// <summary>
+    /// Use this fixture to add any and all additional customizations in subtypes.
+    /// </summary>
     protected IFixture Fixture { get; }
 
-    public Scenario()
+    /// <summary>
+    /// This is the default constructor. It will mock all the constructor parameters of your System Under Test.
+    /// </summary>
+    public Scenario() : this(t => true)
+    {
+    }
+
+    /// <summary>
+    /// If certain types used in your SUT's constructor are not to be instantiated, create a sub type and call this constructor,
+    /// and use the lambda to return <c>false</c> for the types not to be mocked.
+    /// </summary>
+    /// <param name="fakeConstructorParameter"></param>
+    public Scenario(Func<ParameterInfo, bool> fakeConstructorParameter)
     {
         _substitutedDependencies = new HashSet<Type>();
         Fixture = new Fixture();
@@ -45,6 +60,7 @@ public class Scenario<TSut> where TSut : class
         // This way, a test may call the When() first and then Dependency<T>()
         // to assert without configuring and it will still work.
         GetAllParametersFromAllConstructors()
+            .Where(fakeConstructorParameter)
             .Select(parameter => new
             {
                 parameter.ParameterType,

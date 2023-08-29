@@ -21,8 +21,16 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    public async Task<IEnumerable<WeatherForecast>> Get()
     {
+        /// This code is here just to make sure that the InMemory DBContext customizaxtion works
+        weatherContext.Forecasts.Add(new WeatherForecast
+        {
+            Date = DateTime.Now
+        });
+        await weatherContext.SaveChangesAsync();
+        var arr = weatherContext.Forecasts.ToArray();
+
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateTime.Now.AddDays(index),
