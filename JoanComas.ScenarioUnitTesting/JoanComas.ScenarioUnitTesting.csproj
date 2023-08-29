@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Joan Comas</Authors>
     <Company></Company>
     <Product></Product>
     <Description>Helper classes/methods for unit testing</Description>
     <Version>1.1.0</Version>
-    <PackageReleaseNotes>.Net 5 version</PackageReleaseNotes>
+    <PackageReleaseNotes>.Net 7 version</PackageReleaseNotes>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
 
