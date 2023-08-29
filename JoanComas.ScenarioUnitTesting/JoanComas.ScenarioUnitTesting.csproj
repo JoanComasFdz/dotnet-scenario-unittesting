@@ -7,7 +7,7 @@
     <Company></Company>
     <Product></Product>
     <Description>Helper classes/methods for unit testing</Description>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <PackageReleaseNotes>.Net 5 version</PackageReleaseNotes>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
