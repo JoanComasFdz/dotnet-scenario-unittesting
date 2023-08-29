@@ -13,11 +13,16 @@ public class WeatherForecastController : ControllerBase
 
     private readonly ILogger<WeatherForecastController> _logger;
     private readonly WeatherContext weatherContext;
+    private readonly SecondContext secondContext;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger, WeatherContext weatherContext)
+    public WeatherForecastController(
+        ILogger<WeatherForecastController> logger,
+        WeatherContext weatherContext,
+        SecondContext secondContext)
     {
         _logger = logger;
         this.weatherContext = weatherContext;
+        this.secondContext = secondContext;
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
@@ -29,7 +34,12 @@ public class WeatherForecastController : ControllerBase
             Date = DateTime.Now
         });
         await weatherContext.SaveChangesAsync();
-        var arr = weatherContext.Forecasts.ToArray();
+        var forecasts = weatherContext.Forecasts.ToArray();
+
+        /// Make sure two DbContext work perfectly
+        secondContext.SecondForecasts.Add(new SecondForecast { Name = "first second" });
+        await secondContext.SaveChangesAsync();
+        var secondForecasts = secondContext.SecondForecasts.ToArray();  
 
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {

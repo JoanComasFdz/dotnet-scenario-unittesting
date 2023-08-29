@@ -10,7 +10,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ExampleAspNetCoreApplication.WeatherContext>(options =>
 {
-    options.UseInMemoryDatabase("DashboardDatabase");
+    options.UseInMemoryDatabase("WeatherDatabase");
+});
+builder.Services.AddDbContext<ExampleAspNetCoreApplication.SecondContext>(options =>
+{
+    options.UseInMemoryDatabase("SecondDatabase");
 });
 
 var app = builder.Build();
