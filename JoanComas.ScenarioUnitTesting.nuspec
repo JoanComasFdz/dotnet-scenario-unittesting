@@ -2,17 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>JoanComas.ScenarioUnitTesting</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <title>Scenario Unit Testing by Joan Comas</title>
     <authors>Joan Comas</authors>
-    <owners>Joan Comas</owners>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>https://github.com/JoanComasFdz/dotnet-scenario-unittesting/blob/main/LICENSE</licenseUrl>
     <projectUrl>https://github.com/JoanComasFdz/dotnet-scenario-unittesting</projectUrl>
     <description>Simplify your unit tests with a Scenario&lt;T&gt; class as a single point to access the class under test and its dependencies, leveraging xUnit, AutoFixture and NSubstitute.</description>
     <summary>A Scenario&lt;T&gt; class as a single point to access the class under test and its dependencies, leveraging xUnit, AutoFixture and NSubstitute</summary>
     <releaseNotes>.Net 7 version</releaseNotes>
-    <copyright>Joan Comas 2022</copyright>
+    <copyright>Joan Comas 2023</copyright>
     <language>en-US</language>
     <tags>unittesting, scenario</tags>
     <dependencies>
@@ -26,7 +23,9 @@
       </group>
     </dependencies>
   </metadata>
-  <files>
-    <file src="README.md" target="docs\" />
-  </files>
+<files>
+  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.dll" target="lib\net7.0" />
+  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.pdb" target="lib\net7.0" />
+  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.xml" target="lib\net7.0" />
+</files>
 </package>

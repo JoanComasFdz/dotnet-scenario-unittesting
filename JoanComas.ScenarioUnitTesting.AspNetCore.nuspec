@@ -2,11 +2,9 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>JoanComas.ScenarioUnitTesting.AspNetCore</id>
-    <version>1.1.0</version>
+    <version>1.1.3</version>
     <title>Scenario Unit Testing for Asp Net Core by Joan Comas</title>
     <authors>Joan Comas</authors>
-    <owners>Joan Comas</owners>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/JoanComasFdz/dotnet-scenario-unittesting</projectUrl>
     <description>Simplify your controller unit tests with a Scenario&lt;T&gt; class as a single point to access the class under test and its dependencies, leveraging xUnit, AutoFixture and NSubstitute.</description>
     <summary>A Scenario&lt;T&gt; class as a single point to access the class under test and its dependencies, leveraging xUnit, AutoFixture and NSubstitute</summary>
@@ -16,11 +14,14 @@
     <tags>unittesting, scenario, asp net core</tags>
     <dependencies>
       <group targetFramework="net7.0">
-        <dependency id="JoanComas.ScenarioUnitTesting" version="1.1" />
+        <dependency id="JoanComas.ScenarioUnitTesting" version="1.1.1" />
       </group>
     </dependencies>
   </metadata>
-  <files>
-    <file src="README.md" target="docs\" />
-  </files>
+<files>
+  <file src="JoanComas.ScenarioUnitTesting.AspNetCore\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.AspNetCore.dll" target="lib\net7.0" />
+  <file src="JoanComas.ScenarioUnitTesting.AspNetCore\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.AspNetCore.pdb" target="lib\net7.0" />
+  <file src="JoanComas.ScenarioUnitTesting.AspNetCore\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.AspNetCore.deps.json" target="lib\net7.0" />
+  <file src="JoanComas.ScenarioUnitTesting.AspNetCore\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.AspNetCore.xml" target="lib\net7.0" />
+</files>
 </package>
