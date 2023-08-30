@@ -1,3 +1,9 @@
+![JoanComas.ScenarioUnitTesting](https://buildstats.info/nuget/JoanComas.ScenarioUnitTesting) [JoanComas.ScenarioUnitTesting](https://www.nuget.org/packages/JoanComas.ScenarioUnitTesting) 
+
+![JoanComas.ScenarioUnitTesting.AspNetCore](https://buildstats.info/nuget/JoanComas.ScenarioUnitTesting.AspNeTCore) [JoanComas.ScenarioUnitTesting.AspNetCore](https://www.nuget.org/packages/JoanComas.ScenarioUnitTestingAspNetCore)
+
+
+
 # dotnet-scenario-unittesting
 A very easy way to write Unit Tests in [xUnit](https://xunit.net/docs/getting-started/netcore/cmdline), leveraging [NSubstitute](https://github.com/nsubstitute/NSubstitute) and [AutoFixture](https://github.com/AutoFixture/AutoFixture).
 
