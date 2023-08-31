@@ -31,21 +31,23 @@ namespace JoanComas.ScenarioUnitTesting.AspNetCore;
 public class ControllerScenario<TController> : Scenario<TController> where TController : ControllerBase
 {
     /// <summary>
-    /// This constructor makes sure that the <see cref="Scenario"/> does not mock any DbContext passed
+    /// This constructor makes sure that the <see cref="Scenario{TController}"/> does not mock any DbContext passed
     /// in the constructor of the SUT.
     /// </summary>
     public ControllerScenario() : base(t => !typeof(DbContext).IsAssignableFrom(t.ParameterType))
     {
+        // Use NSbustitute to create the fakes.
         Fixture.Customize(new AutoNSubstituteCustomization());
+
+        // Fix for controllers.
         Fixture.Customize<BindingInfo>(c => c.OmitAutoProperties());
 
         // Make sure all DbContext instances use an in-memory database.
-        var customization = new EntityFrameworkCore.AutoFixture.InMemory.InMemoryCustomization
+        Fixture.Customize(new EntityFrameworkCore.AutoFixture.InMemory.InMemoryCustomization
         {
             DatabaseName = $"InMemory-{Guid.NewGuid()}",
             UseUniqueNames = false, // No suffix for store names. All contexts will connect to same store
-        };
-        Fixture.Customize(customization);
+        });
     }
 
     /// <summary>

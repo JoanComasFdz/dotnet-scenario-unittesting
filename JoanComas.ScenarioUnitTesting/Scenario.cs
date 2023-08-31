@@ -1,7 +1,4 @@
 ﻿using NSubstitute;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using AutoFixture;
 
@@ -31,7 +28,7 @@ namespace JoanComas.ScenarioUnitTesting;
 public class Scenario<TSut> where TSut : class
 {
     private readonly HashSet<Type> _substitutedDependencies;
-    private TSut _systemUnderTest;
+    private TSut? _systemUnderTest;
 
     /// <summary>
     /// Use this fixture to add any and all additional customizations in subtypes.
@@ -60,13 +57,16 @@ public class Scenario<TSut> where TSut : class
         // This way, a test may call the When() first and then Dependency<T>()
         // to assert without configuring and it will still work.
         GetAllParametersFromAllConstructors()
-            .Select(parameter => new
-            {
-                parameter.ParameterType,
-                TypeToInject = fakeConstructorParameter(parameter)
-                ? Substitute.For(new[] { parameter.ParameterType }, Array.Empty<object>())
-                : parameter.ParameterType,
-                IsFaked = fakeConstructorParameter(parameter)
+            .Select(parameter => {
+                var isFaked = fakeConstructorParameter(parameter);
+                return new
+                {
+                    parameter.ParameterType,
+                    IsFaked = isFaked,
+                    TypeToInject = isFaked
+                        ? Substitute.For(new[] { parameter.ParameterType }, Array.Empty<object>())
+                        : parameter.ParameterType
+                };
             })
             .ToList()
             .ForEach(info =>
@@ -93,7 +93,7 @@ public class Scenario<TSut> where TSut : class
     /// Returns the dependency of the specified type.
     /// </summary>
     /// <typeparam name="TDependency">The type of dependency to be returned.</typeparam>
-    /// <returns>The existing instance of the substitute for the specified dependency type.</returns>
+    /// <returns>The existing instance of the substitute or real implementation for the specified dependency type.</returns>
     public TDependency Dependency<TDependency>() where TDependency : class
     {
         if (!_substitutedDependencies.Contains(typeof(TDependency)))
@@ -108,7 +108,7 @@ public class Scenario<TSut> where TSut : class
     /// <summary>
     /// Returns the system under test.
     /// </summary>
-    /// <returns>The instance of the system under test with all its dependencies mocked.</returns>
+    /// <returns>The instance of the system under test with all its dependencies, mocked or real.</returns>
     public TSut When()
     {
         return _systemUnderTest ??= Fixture.Create<TSut>();

@@ -12,6 +12,8 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
+
+    // Two DbContext are used to make sure the ControllerScenario can handle that.
     private readonly WeatherContext weatherContext;
     private readonly SecondContext secondContext;
 
