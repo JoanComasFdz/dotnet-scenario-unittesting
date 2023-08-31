@@ -1,4 +1,4 @@
-# Dotnet Scenario Unit Testing ![JoanComas.ScenarioUnitTesting](https://buildstats.info/nuget/JoanComas.ScenarioUnitTesting)
+# .NET Scenario Unit Testing ![JoanComas.ScenarioUnitTesting](https://buildstats.info/nuget/JoanComas.ScenarioUnitTesting)
 A very easy way to write Unit Tests in [xUnit](https://xunit.net/docs/getting-started/netcore/cmdline), leveraging [NSubstitute](https://github.com/nsubstitute/NSubstitute) and [AutoFixture](https://github.com/AutoFixture/AutoFixture), complemented with [FluentAssertions](https://fluentassertions.com/).
 
 ## Installation
