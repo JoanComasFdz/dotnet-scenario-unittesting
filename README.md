@@ -1,15 +1,15 @@
 # Dotnet Scenario Unit Testing ![JoanComas.ScenarioUnitTesting](https://buildstats.info/nuget/JoanComas.ScenarioUnitTesting)
 A very easy way to write Unit Tests in [xUnit](https://xunit.net/docs/getting-started/netcore/cmdline), leveraging [NSubstitute](https://github.com/nsubstitute/NSubstitute) and [AutoFixture](https://github.com/AutoFixture/AutoFixture), complemented with [FluentAssertions](https://fluentassertions.com/).
 
-# Installation
+## Installation
 Install the [JoanComas.ScenarioUnitTesting Nuget Package](https://www.nuget.org/packages/JoanComas.ScenarioUnitTesting)
 
-## Package Manager Console
+### Package Manager Console
 ```
 Install-Package JoanComas.ScenarioUnitTesting
 ```
 
-## .NET Core CLI
+### .NET Core CLI
 ```
 dotnet add package JoanComas.ScenarioUnitTesting
 ```
@@ -36,7 +36,7 @@ public void ExampleTest(Scenario<MyClass> scenario)
 }
 ```
 
-## Asp .NET Core Scenario Unit Testing ![JoanComas.ScenarioUnitTesting.AspNetCore](https://buildstats.info/nuget/JoanComas.ScenarioUnitTesting.AspNeTCore)
+# Asp .NET Core Scenario Unit Testing ![JoanComas.ScenarioUnitTesting.AspNetCore](https://buildstats.info/nuget/JoanComas.ScenarioUnitTesting.AspNeTCore)
 
 
 Based on the ScenarioUnitTesting, allows to instantiate a `Controller` (which won't be possilble with the `Scenario` class because of [BindingInfo](https://github.com/AutoFixture/AutoFixture/issues/1141])), just use the `ControllerScenario` instead.
@@ -45,21 +45,21 @@ Additionally, it has a `ControllerContext` property exposed to arrange it.
 
 Finally, it makes sure that any `DbContext` uses an in-memory database, so that you don't have to arrange nor fake it to avoid a real database connection.
 
-# Installation
+## Installation
 Install the [JoanComas.ScenarioUnitTesting.AspNetCore Nuget Package](https://www.nuget.org/packages/JoanComas.ScenarioUnitTesting.AspNetCore)
 
 
-## Package Manager Console
+### Package Manager Console
 ```
 Install-Package JoanComas.ScenarioUnitTesting.AspNetCore
 ```
 
-## .NET Core CLI
+### .NET Core CLI
 ```
 dotnet add package JoanComas.ScenarioUnitTesting.AspNetCore
 ```
 
-# Usage
+## Usage
 
 Example:
 
