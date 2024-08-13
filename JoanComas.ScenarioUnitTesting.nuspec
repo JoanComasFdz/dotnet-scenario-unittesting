@@ -8,24 +8,24 @@
     <projectUrl>https://github.com/JoanComasFdz/dotnet-scenario-unittesting</projectUrl>
     <description>Simplify your unit tests with a Scenario&lt;T&gt; class as a single point to access the class under test and its dependencies, leveraging xUnit, AutoFixture and NSubstitute.</description>
     <summary>A Scenario&lt;T&gt; class as a single point to access the class under test and its dependencies, leveraging xUnit, AutoFixture and NSubstitute</summary>
-    <releaseNotes>Now the Scenario.Dependency() works with non-faked types.</releaseNotes>
-    <copyright>Joan Comas 2023</copyright>
+    <releaseNotes>Upgraded to .NET 8.</releaseNotes>
+    <copyright>Joan Comas 2024</copyright>
     <language>en-US</language>
     <tags>unittesting, scenario</tags>
     <dependencies>
-      <group targetFramework="net7.0">
-        <dependency id="AutoFixture" version="4.18.0" exclude="Build,Analyzers" />
-        <dependency id="AutoFixture.AutoNSubstitute" version="4.18.0" exclude="Build,Analyzers" />
-        <dependency id="AutoFixture.Xunit2" version="4.18.0" exclude="Build,Analyzers" />
+      <group targetFramework="net8.0">
+        <dependency id="AutoFixture" version="4.18.1" exclude="Build,Analyzers" />
+        <dependency id="AutoFixture.AutoNSubstitute" version="4.18.1" exclude="Build,Analyzers" />
+        <dependency id="AutoFixture.Xunit2" version="4.18.1" exclude="Build,Analyzers" />
         <dependency id="FluentAssertions" version="6.12.0" exclude="Build,Analyzers" />
-        <dependency id="NSubstitute" version="5.0.0" exclude="Build,Analyzers" />
+        <dependency id="NSubstitute" version="5.1.0" exclude="Build,Analyzers" />
         <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
 <files>
-  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.dll" target="lib\net7.0" />
-  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.pdb" target="lib\net7.0" />
-  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.xml" target="lib\net7.0" />
+  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.dll" target="lib\net8.0" />
+  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.pdb" target="lib\net8.0" />
+  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.xml" target="lib\net8.0" />
 </files>
 </package>
