@@ -1,0 +1,47 @@
+name: Set Version and Create PR
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  set-version:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+
+    - name: Extract version from tag
+      id: extract_version
+      run: echo "##[set-output name=VERSION;]${GITHUB_REF#refs/tags/v}"
+
+    - name: Set version in .csproj
+      run: sed -i 's|<Version>.*</Version>|<Version>${{ steps.extract_version.outputs.VERSION }}</Version>|' JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
+
+    - name: Set version in .nuspec
+      run: sed -i 's|<version>.*</version>|<version>${{ steps.extract_version.outputs.VERSION }}</version>|' JoanComas.ScenarioUnitTesting.nuspec
+
+    - name: Commit and create branch
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git checkout -b version-update-${{ steps.extract_version.outputs.VERSION }}
+        git add JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
+        git add JoanComas.ScenarioUnitTesting.nuspec
+        git commit -m "Update version to ${{ steps.extract_version.outputs.VERSION }}"
+        git push origin version-update-${{ steps.extract_version.outputs.VERSION }}
+
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: version-update-${{ steps.extract_version.outputs.VERSION }}
+        title: "Update version to ${{ steps.extract_version.outputs.VERSION }}"
+        body: "This PR updates the project version to ${{ steps.extract_version.outputs.VERSION }}."
+        base: main
+        labels: |
+          version-update
