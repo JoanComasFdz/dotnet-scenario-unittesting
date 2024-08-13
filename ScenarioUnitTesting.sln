@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JoanComas.ScenarioUnitTesti
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExampleAspNetCoreApplication", "ExampleAspNetCoreApplication", "{68572C0C-8BD4-431F-A55A-7CF93EAAB2E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAspNetCoreApplication", "ExampleAspNetCoreApplication\ExampleAspNetCoreApplication\ExampleAspNetCoreApplication.csproj", "{1F7B1A99-BC9D-4F23-9619-8F4086BB60D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAspNetCoreApplication", "ExampleAspNetCoreApplication\ExampleAspNetCoreApplication\ExampleAspNetCoreApplication.csproj", "{1F7B1A99-BC9D-4F23-9619-8F4086BB60D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAspNetCoreApplication.Test", "ExampleAspNetCoreApplication\ExampleAspNetCoreApplication.Test\ExampleAspNetCoreApplication.Test.csproj", "{91A6B549-666D-487A-A849-914646562150}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAspNetCoreApplication.Test", "ExampleAspNetCoreApplication\ExampleAspNetCoreApplication.Test\ExampleAspNetCoreApplication.Test.csproj", "{91A6B549-666D-487A-A849-914646562150}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
