@@ -20,19 +20,12 @@ jobs:
       with:
         dotnet-version: '8.x'
 
-    - name: Install GitVersion
-      run: dotnet tool install --global GitVersion.Tool
-
-    - name: Get the current branch name
-      id: get_branch
-      run: echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
-
-    - name: Determine version
-      id: gitversion
-      run: dotnet-gitversion /output json /showvariable FullSemVer -b ${{ steps.get_branch.outputs.branch }}
+    - name: Extract version from tag
+      id: extract_version
+      run: echo "##[set-output name=VERSION;]${GITHUB_REF#refs/tags/v}"
 
     - name: Set version in .csproj
-      run: sed -i 's|<Version>.*</Version>|<Version>${{ steps.gitversion.outputs.version }}</Version>|' JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
+      run: sed -i 's|<Version>.*</Version>|<Version>${{ steps.extract_version.outputs.VERSION }}</Version>|' JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
 
     - name: Restore dependencies
       run: dotnet restore
@@ -41,7 +34,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Pack the project
-      run: dotnet pack JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj --configuration Release --no-build -o ./artifacts /p:PackageVersion=${{ steps.gitversion.outputs.version }}
+      run: dotnet pack JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj --configuration Release --no-build -o ./artifacts /p:PackageVersion=${{ steps.extract_version.outputs.VERSION }}
 
     - name: Publish to NuGet
       env:
@@ -52,5 +45,5 @@ jobs:
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
-        git tag ${{ steps.gitversion.outputs.version }}
-        git push origin ${{ steps.gitversion.outputs.version }}
+        git tag ${{ steps.extract_version.outputs.VERSION }}
+        git push origin ${{ steps.extract_version.outputs.VERSION }}
