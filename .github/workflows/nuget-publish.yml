@@ -41,7 +41,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Pack the project
-      run: dotnet pack --configuration Release --no-build -o ./artifacts /p:PackageVersion=${{ steps.gitversion.outputs.version }}
+      run: dotnet pack JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj --configuration Release --no-build -o ./artifacts /p:PackageVersion=${{ steps.gitversion.outputs.version }}
 
     - name: Publish to NuGet
       env:
