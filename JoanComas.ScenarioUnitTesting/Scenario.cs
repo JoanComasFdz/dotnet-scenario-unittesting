@@ -64,7 +64,7 @@ public class Scenario<TSut> where TSut : class
                     parameter.ParameterType,
                     IsFaked = isFaked,
                     TypeToInject = isFaked
-                        ? Substitute.For(new[] { parameter.ParameterType }, Array.Empty<object>())
+                        ? Substitute.For([parameter.ParameterType], [])
                         : parameter.ParameterType
                 };
             })
@@ -79,15 +79,11 @@ public class Scenario<TSut> where TSut : class
             });
     }
 
-    private static IEnumerable<ParameterInfo> GetAllParametersFromAllConstructors()
-    {
-        var parameters1 = typeof(TSut)
+    private static IEnumerable<ParameterInfo> GetAllParametersFromAllConstructors() => typeof(TSut)
             .GetConstructors()
             .SelectMany(c => c.GetParameters())
             .Distinct()
             .ToArray();
-        return parameters1;
-    }
 
     /// <summary>
     /// Returns the dependency of the specified type.
