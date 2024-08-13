@@ -1,0 +1,39 @@
+name: Publish NuGet Package
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'version-update')
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
+
+    - name: Extract version from .csproj
+      id: extract_version
+      run: echo "##[set-output name=VERSION;]$(dotnet msbuild JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj -nologo -verbosity:quiet -target:GetAssemblyVersion | grep Version | sed 's/.*Version=//')"
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build the project
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Pack the project
+      run: dotnet pack JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj --configuration Release --no-build -o ./artifacts /p:PackageVersion=${{ steps.extract_version.outputs.VERSION }}
+
+    # - name: Publish to NuGet
+    #   env:
+    #     NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+    #   run: dotnet nuget push ./artifacts/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
