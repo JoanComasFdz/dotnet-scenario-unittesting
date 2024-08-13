@@ -10,7 +10,7 @@ namespace JoanComas.ScenarioUnitTesting.AspNetCore;
 /// <summary>
 /// Extends the <see cref="Scenario{TSut}"/> class so that it can handle Asp .Net Core's <see cref="ControllerBase"/> classes
 /// and provides tools too access particular properties of a <see cref="ControllerBase"/>.
-/// 
+///
 /// <para>
 /// This is necessary because when AutoFixture creates an instance of a <c>Controller</c>, it will not be able to create a
 /// substitute for the property <see cref="BindingInfo"/>. This class provides a customization to avoid the issue.
@@ -19,7 +19,7 @@ namespace JoanComas.ScenarioUnitTesting.AspNetCore;
 /// <para>
 /// Source: https://github.com/AutoFixture/AutoFixture/issues/1141
 /// </para>
-/// 
+///
 /// <para>
 /// Additionally, it makes sure that any <see cref="DbContext"/> uses an in-memory databases,
 /// so that you do not have to arrange all the calls to the context and you make sure no connection

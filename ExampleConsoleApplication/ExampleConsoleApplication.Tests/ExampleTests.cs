@@ -13,7 +13,7 @@ public class ExampleTests
         string emailAddress)
     {
         scenario.When().Notify(emailAddress);
-        
+
         scenario.Dependency<IEmailSender>()
             .Received()
             .SendTo(emailAddress, Arg.Is<string>(s => string.IsNullOrWhiteSpace(s)));
@@ -25,7 +25,7 @@ public class ExampleTests
         string emailAddress,
         Alert alert)
     {
-        scenario.Dependency<IAlertsProvider>().GetAlerts().Returns(new [] { alert });
+        scenario.Dependency<IAlertsProvider>().GetAlerts().Returns([alert]);
 
         scenario.When().Notify(emailAddress);
 

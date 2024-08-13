@@ -7,7 +7,7 @@ namespace JoanComas.ScenarioUnitTesting;
 /// This class was created after inspecting the source code of the <c>Inject&lt;T&gt;()</c>
 /// extension methods for the <see cref="IFixture"/> interface.
 /// </para>
-/// 
+///
 /// It adds the generic type to the class definition, so that the correct generic type
 /// can be made and instantiated via reflection.
 /// </summary>
