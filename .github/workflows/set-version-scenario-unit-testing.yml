@@ -1,4 +1,4 @@
-name: Set Version and Create PR
+name: Set Version
 
 on:
   push:
@@ -6,51 +6,46 @@ on:
       - 'v*.*.*'
 
 jobs:
-  set-version:
+  update-version:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        persist-credentials: true  # Ensure credentials are available for pushing
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Extract version from tag
-      id: extract_version
-      run: echo "##[set-output name=VERSION;]${GITHUB_REF#refs/tags/v}"
+      - name: Set up Git user
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
 
-    - name: Set version in .csproj
-      run: sed -i 's|<Version>.*</Version>|<Version>${{ steps.extract_version.outputs.VERSION }}</Version>|' JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
+      - name: Extract version from tag
+        id: extract_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
-    - name: Set version in .nuspec
-      run: sed -i 's|<version>.*</version>|<version>${{ steps.extract_version.outputs.VERSION }}</version>|' JoanComas.ScenarioUnitTesting.nuspec
+      - name: Update version in .csproj file
+        run: |
+          sed -i "s|<Version>.*</Version>|<Version>${{ env.VERSION }}</Version>|" JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
+          sed -i "s|<version>.*</version>|<version>${{ env.VERSION }}</version>|" JoanComas.ScenarioUnitTesting.nuspec
 
-    - name: Print modified .csproj
-      run: cat JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
+      - name: Create new branch
+        run: |
+          git checkout -b version-update-${{ env.VERSION }}
+          git add JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
+          git add JoanComas.ScenarioUnitTesting.nuspec
+          git commit -m "Update version to ${{ env.VERSION }}"
+          git push origin version-update-${{ env.VERSION }}
 
-    - name: Print modified .nuspec
-      run: cat JoanComas.ScenarioUnitTesting.nuspec
+      - name: Create version-update label if not exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create version-update --description "Label for version updates" || echo "Label already exists"
 
-    - name: Commit and create branch
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-        git checkout -b version-update-${{ steps.extract_version.outputs.VERSION }}
-        git add JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
-        git add JoanComas.ScenarioUnitTesting.nuspec
-        git commit -m "Update version to ${{ steps.extract_version.outputs.VERSION }}"
-        git push origin version-update-${{ steps.extract_version.outputs.VERSION }}
-
-    - name: Create version-update label if not exists
-      run: |
-        gh label create version-update --description "Label for version updates" || echo "Label already exists"
-
-    - name: Create Pull Request
-      run: |
-        gh pr create --title "Update version to ${{ env.VERSION }}" \
-                      --body "This PR updates the version number to ${{ env.VERSION }}." \
-                      --head version-update-${{ env.VERSION }} \
-                      --base main \
-                      --label version-update
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create --title "Update version to ${{ env.VERSION }}" \
+                       --body "This PR updates the version number to ${{ env.VERSION }}." \
+                       --head version-update-${{ env.VERSION }} \
+                       --base main \
+                       --label version-update
