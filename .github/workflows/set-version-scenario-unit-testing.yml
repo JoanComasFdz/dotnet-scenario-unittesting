@@ -41,17 +41,12 @@ jobs:
         git commit -m "Update version to ${{ steps.extract_version.outputs.VERSION }}"
         git push origin version-update-${{ steps.extract_version.outputs.VERSION }}
 
-    - name: Show reference log
+    - name: Create Pull Request
       run: |
-        git reflog
-        
-    - name: Create pull request
-      uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        branch: version-update-${{ steps.extract_version.outputs.VERSION }}
-        title: "Update version to ${{ steps.extract_version.outputs.VERSION }}"
-        body: "This PR updates the project version to ${{ steps.extract_version.outputs.VERSION }}."
-        base: main
-        labels: |
-          version-update
+        gh pr create --title "Update version to ${{ env.VERSION }}" \
+                      --body "This PR updates the version number to ${{ env.VERSION }}." \
+                      --head version-update-${{ env.VERSION }} \
+                      --base main \
+                      --label version-update
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
