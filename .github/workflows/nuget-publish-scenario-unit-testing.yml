@@ -22,7 +22,10 @@ jobs:
 
     - name: Extract version from .csproj
       id: extract_version
-      run: echo "##[set-output name=VERSION;]$(dotnet msbuild JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj -nologo -verbosity:quiet -target:GetAssemblyVersion | grep Version | sed 's/.*Version=//')"
+      run: |
+        VERSION=$(grep -oPm1 "(?<=<Version>)[^<]+" JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj)
+        echo "Extracted version: $VERSION"
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
 
     - name: Restore dependencies
       run: dotnet restore
@@ -31,7 +34,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Pack the project
-      run: dotnet pack JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj --configuration Release --no-build -o ./artifacts /p:PackageVersion=${{ steps.extract_version.outputs.VERSION }}
+      run: dotnet pack JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj --configuration Release --no-build -o ./artifacts /p:PackageVersion=${{ env.VERSION }}
 
     # - name: Publish to NuGet
     #   env:
