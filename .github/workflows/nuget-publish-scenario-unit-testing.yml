@@ -1,4 +1,4 @@
-name: Publish NuGet Package
+name: Publish NuGet Package - JoanComas.ScenarioUnitTesting
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   publish:
-    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'version-update')
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'version-update-net')
     runs-on: ubuntu-latest
 
     steps:
