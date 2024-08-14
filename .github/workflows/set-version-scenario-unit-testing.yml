@@ -41,6 +41,10 @@ jobs:
         git commit -m "Update version to ${{ steps.extract_version.outputs.VERSION }}"
         git push origin version-update-${{ steps.extract_version.outputs.VERSION }}
 
+    - name: Show reference log
+      run: |
+        git reflog
+        
     - name: Create pull request
       uses: peter-evans/create-pull-request@v5
       with:
