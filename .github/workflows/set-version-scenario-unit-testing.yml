@@ -41,6 +41,10 @@ jobs:
         git commit -m "Update version to ${{ steps.extract_version.outputs.VERSION }}"
         git push origin version-update-${{ steps.extract_version.outputs.VERSION }}
 
+    - name: Create version-update label if not exists
+        run: |
+          gh label create version-update --description "Label for version updates" || echo "Label already exists"
+
     - name: Create Pull Request
       run: |
         gh pr create --title "Update version to ${{ env.VERSION }}" \
