@@ -80,3 +80,22 @@ public void ExampleTest(ControllerScenario<MyControllerClass> scenario)
 
 **Important**: 
  If your Controller gets a `DbContext` injected, make sure that the types used in the `DbSets` have a primary key.
+
+ # Contributing
+- Use a feature branch to produce changes.
+- Create a PR to merge back to main.
+
+## Releasing
+The .NET and the ASP .Net Core libraries can be released independently.
+
+In both cases, a tag with the specified version number and suffix has to be createad in git and pushed. This will trigger a workflow and create a PR autoamtically. Approving the PR will publish a new package in nuget.org.
+
+### .NET version
+```
+> git tag vX.Y.Z-net && git push origin vX.Y.Z-net
+```
+
+### ASP .NET Core version
+```
+> git tag vX.Y.Z-aspnetcore && git push origin vX.Y.Z-aspnetcore
+```
