@@ -25,6 +25,12 @@ jobs:
     - name: Set version in .nuspec
       run: sed -i 's|<version>.*</version>|<version>${{ steps.extract_version.outputs.VERSION }}</version>|' JoanComas.ScenarioUnitTesting.nuspec
 
+    - name: Print modified .csproj
+      run: cat JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
+
+    - name: Print modified .nuspec
+      run: cat JoanComas.ScenarioUnitTesting.nuspec
+
     - name: Commit and create branch
       run: |
         git config user.name "GitHub Actions"
