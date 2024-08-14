@@ -79,6 +79,4 @@ public void ExampleTest(ControllerScenario<MyControllerClass> scenario)
 ```
 
 **Important**: 
- If your Controller gets a `DbContext` injected, make sure that:
- - It has a parameterless constructor.
- - The types used in the `DbSets` have a primary key.
+ If your Controller gets a `DbContext` injected, make sure that the types used in the `DbSets` have a primary key.
