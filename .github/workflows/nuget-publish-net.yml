@@ -20,6 +20,11 @@ jobs:
       with:
         dotnet-version: '8.x'
 
+    - name: Setup NuGet CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y nuget
+
     - name: Extract version from .csproj
       id: extract_version
       run: |
@@ -33,10 +38,11 @@ jobs:
     - name: Build the project
       run: dotnet build --configuration Release --no-restore
 
-    - name: Pack the project
-      run: dotnet pack JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj --configuration Release --no-build -o ./artifacts /p:PackageVersion=${{ env.VERSION }}
+    - name: Pack the project using NuGet
+      run: |
+        nuget pack JoanComas.ScenarioUnitTesting.nuspec -Version ${{ env.VERSION }} -OutputDirectory ./artifacts
 
     - name: Publish to NuGet
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      run: dotnet nuget push ./artifacts/*.nupkg --api-key $NUGET_API_KEY --source https://api.nuget.org/v3/index.json
+      run: nuget push ./artifacts/*.nupkg -ApiKey $NUGET_API_KEY -Source https://api.nuget.org/v3/index.json
