@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        persist-credentials: false
+        persist-credentials: true  # Ensure credentials are available for pushing
 
     - name: Extract version from tag
       id: extract_version
