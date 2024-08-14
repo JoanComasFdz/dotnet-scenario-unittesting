@@ -9,6 +9,7 @@
     <description>Simplify your controller unit tests with a Scenario&lt;T&gt; class as a single point to access the class under test and its dependencies, leveraging xUnit, AutoFixture and NSubstitute.</description>
     <summary>A Scenario&lt;T&gt; class as a single point to access the class under test and its dependencies, leveraging xUnit, AutoFixture and NSubstitute</summary>
     <releaseNotes>Upgraded to .NET 8</releaseNotes>
+    <readme>docs/README-aspnetcore.md</readme>
     <copyright>Joan Comas 2024</copyright>
     <language>en-US</language>
     <tags>unittesting, scenario, asp net core</tags>
@@ -24,5 +25,6 @@
   <file src="JoanComas.ScenarioUnitTesting.AspNetCore\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.AspNetCore.pdb" target="lib\net8.0" />
   <file src="JoanComas.ScenarioUnitTesting.AspNetCore\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.AspNetCore.deps.json" target="lib\net8.0" />
   <file src="JoanComas.ScenarioUnitTesting.AspNetCore\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.AspNetCore.xml" target="lib\net8.0" />
+  <file src="README.md" target="" />
 </files>
 </package>
