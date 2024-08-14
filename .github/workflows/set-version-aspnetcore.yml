@@ -1,0 +1,51 @@
+name: Set Version - JoanComas.ScenarioUnitTesting.AspNetCore
+
+on:
+  push:
+    tags:
+      - 'v*.*.*-aspnetcore'
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Git user
+        run: |
+          git config --global user.email "joan.comas.fdz@gmail.com"
+          git config --global user.name "Joan Comas"
+
+      - name: Extract version from tag
+        id: extract_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" | sed 's/-aspnetcore$//' >> $GITHUB_ENV
+
+      - name: Update version in .csproj and .nuspec
+        run: |
+          sed -i "s|<Version>.*</Version>|<Version>${{ env.VERSION }}</Version>|" JoanComas.ScenarioUnitTesting.AspNetCore/JoanComas.ScenarioUnitTesting.AspNetCore.csproj
+          sed -i "s|<version>.*</version>|<version>${{ env.VERSION }}</version>|" JoanComas.ScenarioUnitTesting.AspNetCore.nuspec
+
+      - name: Create new branch and PR
+        run: |
+          git checkout -b version-update-aspnetcore-${{ env.VERSION }}
+          git add JoanComas.ScenarioUnitTesting.AspNetCore/JoanComas.ScenarioUnitTesting.AspNetCore.csproj
+          git add JoanComas.ScenarioUnitTesting.AspNetCore.nuspec
+          git commit -m "Update version to ${{ env.VERSION }} for AspNetCore"
+          git push origin version-update-aspnetcore-${{ env.VERSION }}
+
+      - name: Ensure label exists
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create version-update-aspnetcore --description "Label for AspNetCore version updates" || echo "Label already exists"
+
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create --title "Update AspNetCore version to ${{ env.VERSION }}" \
+                       --body "This PR updates the AspNetCore version number to ${{ env.VERSION }}." \
+                       --head version-update-aspnetcore-${{ env.VERSION }} \
+                       --base main \
+                       --label version-update-aspnetcore
