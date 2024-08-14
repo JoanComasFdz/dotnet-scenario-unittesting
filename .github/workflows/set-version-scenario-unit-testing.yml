@@ -28,11 +28,11 @@ jobs:
 
       - name: Create new branch and PR
         run: |
-          git checkout -b version-update-net-${{ env.VERSION }}
+          git checkout -b version-update-${{ env.VERSION }}-net
           git add JoanComas.ScenarioUnitTesting/JoanComas.ScenarioUnitTesting.csproj
           git add JoanComas.ScenarioUnitTesting.nuspec
           git commit -m "Update version to ${{ env.VERSION }} for .NET"
-          git push origin version-update-net-${{ env.VERSION }}
+          git push origin version-update-${{ env.VERSION }}-net
 
       - name: Ensure label exists
         env:
@@ -46,6 +46,6 @@ jobs:
         run: |
           gh pr create --title "Update .NET version to ${{ env.VERSION }}" \
                        --body "This PR updates the .NET version number to ${{ env.VERSION }}." \
-                       --head version-update-net-${{ env.VERSION }} \
+                       --head version-update-${{ env.VERSION }}-net \
                        --base main \
                        --label version-update-net

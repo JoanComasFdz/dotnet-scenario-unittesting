@@ -28,11 +28,11 @@ jobs:
 
       - name: Create new branch and PR
         run: |
-          git checkout -b version-update-aspnetcore-${{ env.VERSION }}
+          git checkout -b version-update-${{ env.VERSION }}-aspnetcore
           git add JoanComas.ScenarioUnitTesting.AspNetCore/JoanComas.ScenarioUnitTesting.AspNetCore.csproj
           git add JoanComas.ScenarioUnitTesting.AspNetCore.nuspec
           git commit -m "Update version to ${{ env.VERSION }} for AspNetCore"
-          git push origin version-update-aspnetcore-${{ env.VERSION }}
+          git push origin version-update-${{ env.VERSION }}-aspnetcore
 
       - name: Ensure label exists
         env:
@@ -46,6 +46,6 @@ jobs:
         run: |
           gh pr create --title "Update AspNetCore version to ${{ env.VERSION }}" \
                        --body "This PR updates the AspNetCore version number to ${{ env.VERSION }}." \
-                       --head version-update-aspnetcore-${{ env.VERSION }} \
+                       --head version-update-${{ env.VERSION }}-aspnetcore \
                        --base main \
                        --label version-update-aspnetcore
