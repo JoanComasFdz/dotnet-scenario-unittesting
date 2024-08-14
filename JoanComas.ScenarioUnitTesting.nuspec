@@ -9,7 +9,7 @@
     <description>Simplify your unit tests with a Scenario&lt;T&gt; class as a single point to access the class under test and its dependencies, leveraging xUnit, AutoFixture and NSubstitute.</description>
     <summary>A Scenario&lt;T&gt; class as a single point to access the class under test and its dependencies, leveraging xUnit, AutoFixture and NSubstitute</summary>
     <releaseNotes>Upgraded to .NET 8.</releaseNotes>
-    <readme>docs/README-net.md</readme>
+    <readme>README-net.md</readme>
     <copyright>Joan Comas 2024</copyright>
     <language>en-US</language>
     <tags>unittesting, scenario</tags>
@@ -28,5 +28,6 @@
   <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.dll" target="lib\net8.0" />
   <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.pdb" target="lib\net8.0" />
   <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.xml" target="lib\net8.0" />
+  <file src="docs\README-net.md" target="." />
 </files>
 </package>
