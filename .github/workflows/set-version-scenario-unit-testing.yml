@@ -14,8 +14,8 @@ jobs:
 
       - name: Set up Git user
         run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
+          git config --global user.email "joan.comas.fdz@gmail.com"
+          git config --global user.name "Joan Comas"
 
       - name: Extract version from tag
         id: extract_version
