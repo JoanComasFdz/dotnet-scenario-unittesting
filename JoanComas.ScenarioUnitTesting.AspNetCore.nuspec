@@ -25,6 +25,5 @@
   <file src="JoanComas.ScenarioUnitTesting.AspNetCore\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.AspNetCore.pdb" target="lib\net8.0" />
   <file src="JoanComas.ScenarioUnitTesting.AspNetCore\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.AspNetCore.deps.json" target="lib\net8.0" />
   <file src="JoanComas.ScenarioUnitTesting.AspNetCore\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.AspNetCore.xml" target="lib\net8.0" />
-  <file src="README.md" target="" />
 </files>
 </package>
