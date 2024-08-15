@@ -1,5 +1,4 @@
-# Asp .NET Core Scenario Unit Testing ![JoanComas.ScenarioUnitTesting.AspNetCore](https://buildstats.info/nuget/JoanComas.ScenarioUnitTesting.AspNeTCore)
-
+# Asp .NET Core Scenario Unit Testing
 
 Based on the ScenarioUnitTesting, allows to instantiate a `Controller` (which won't be possilble with the `Scenario` class because of [BindingInfo](https://github.com/AutoFixture/AutoFixture/issues/1141])), just use the `ControllerScenario` instead.
 
