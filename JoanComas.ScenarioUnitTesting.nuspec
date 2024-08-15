@@ -25,9 +25,9 @@
     </dependencies>
   </metadata>
 <files>
-  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.dll" target="lib\net8.0" />
-  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.pdb" target="lib\net8.0" />
-  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net7.0\JoanComas.ScenarioUnitTesting.xml" target="lib\net8.0" />
+  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net8.0\JoanComas.ScenarioUnitTesting.dll" target="lib\net8.0" />
+  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net8.0\JoanComas.ScenarioUnitTesting.pdb" target="lib\net8.0" />
+  <file src="JoanComas.ScenarioUnitTesting\bin\Release\net8.0\JoanComas.ScenarioUnitTesting.xml" target="lib\net8.0" />
   <file src="docs\README-net.md" target="." />
 </files>
 </package>
