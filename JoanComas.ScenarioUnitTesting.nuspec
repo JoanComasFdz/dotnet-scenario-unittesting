@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>JoanComas.ScenarioUnitTesting</id>
-    <version>1.2.4</version>
+    <version>1.2.5</version>
     <title>Scenario Unit Testing by Joan Comas</title>
     <authors>Joan Comas</authors>
     <projectUrl>https://github.com/JoanComasFdz/dotnet-scenario-unittesting</projectUrl>
